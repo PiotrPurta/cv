@@ -1,0 +1,25 @@
+a{
+    color: #FFFFFF;
+}
+
+mat-card-content{
+    display: flex;
+    justify-content: space-between;
+    color: #FFFFFF;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+mat-card-header{
+    width: 50%;
+}
+
+mat-card-title {
+    color: #FFFFFF;
+}
+
+@media screen and (max-width: 590px) {
+    .image{
+        display: none;
+    }
+}

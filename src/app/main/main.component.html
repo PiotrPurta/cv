@@ -1,0 +1,52 @@
+<app-loading-modal *ngIf="isLoading"></app-loading-modal>
+
+<mat-toolbar color="primary">
+  <span>{{title}}</span>
+  <span class="header-spacer"></span>
+  <button mat-icon-button class="header-icon" (click)="onDownloadClicked()">
+    <mat-icon>download</mat-icon>
+  </button>
+  <button mat-icon-button class="header-icon" (click)="onFavouriteClicked()">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="header-icon" (click)="onShareClicked()">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+<app-personal-details [profile]="profile"></app-personal-details>
+<mat-accordion>
+  <mat-expansion-panel *ngIf="hasAdditionalProfiles">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Additional Profiles
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+      <app-additional-profile *ngFor="let additionalProfile of profile?.additionalProfiles"
+        name="{{additionalProfile.name}}" url="{{additionalProfile.url}}">
+      </app-additional-profile>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Work experience
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-work-history *ngFor="let workEntry of profile?.workHistory" [entry]="workEntry"></app-work-history>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Education
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <app-education-entry *ngFor="let educationEntry of profile?.educationHistory" [entry]="educationEntry"></app-education-entry>
+  </mat-expansion-panel>
+  <mat-expansion-panel *ngIf="hasCertificates">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Certificates
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Nothing here yet.</p>
+  </mat-expansion-panel>
+</mat-accordion>

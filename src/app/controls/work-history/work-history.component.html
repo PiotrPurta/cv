@@ -1,0 +1,11 @@
+<div class="entry">
+    <div>
+        <span class="period"><b>{{entry?.dateFrom}} - {{entry?.dateTo}}</b></span>
+    </div>
+    <div class="description">
+        <p><b>{{entry?.company}} ({{entry?.role}})</b></p>
+        <ul>
+            <li *ngFor="let detail of entry?.projectsDetails">{{detail}}</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title-group>
+            <mat-card-title>{{profile?.firstName}} {{profile?.lastName | uppercase}}</mat-card-title>
+            <mat-card-title>PERSONAL DETAILS</mat-card-title>
+        </mat-card-title-group>
+    </mat-card-header>
+    
+    <mat-card-content>
+        <table>
+            <tr>
+                <td>BIRTHDATE:</td>
+                <td>{{profile?.birthDate}}</td>
+            </tr>
+            <tr>
+                <td>ADDRESS:</td>
+                <td>{{profile?.address}}</td>
+            </tr>
+            <tr>
+                <td>E-MAIL:</td>
+                <td>{{profile?.email}}</td>
+            </tr>
+            <tr>
+                <td>GITHUB:</td>
+                <td><a [href]="profile?.githubUrl" target="_blank">{{profile?.githubUrl}}</a></td>
+            </tr>
+            <tr>
+                <td>WEBSITE:</td>
+                <td><a [href]="profile?.website" target="_blank">{{profile?.website}}</a></td>
+            </tr>
+          </table>
+          <img class="image" mat-card-lg-image src={{profile?.image}}>
+    </mat-card-content>
+</mat-card>
