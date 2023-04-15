@@ -1,4 +1,6 @@
+import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { firstValueFrom } from "rxjs";
 import { Profile } from "../model/profile";
 
 @Injectable({
@@ -6,17 +8,11 @@ import { Profile } from "../model/profile";
 })
 
 export class ProfileService{
-    profile: Profile;
-
-    sleep = (ms: number | undefined) => new Promise(r => setTimeout(r, ms));
-    
-    constructor(){
-        this.profile = {...
-        }
-    }
+   
+    constructor(private http:HttpClient){ }
 
     public async getProfileData(): Promise<Profile>{
-        await this.sleep (1000);
-        return this.profile
+        const profile: Profile = await firstValueFrom(this.http.get<Profile>('https://ppp-az-today-quote.azurewebsites.net/api/getresumedata'));
+        return profile;
     }
 }
