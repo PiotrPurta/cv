@@ -1,0 +1,6 @@
+<div *ngFor="let certificateCategory of certificateCategories">
+    <p>{{certificateCategory}}</p>
+    <div class="certificate-container">
+        <app-certificate-entry *ngFor="let cert of getCertificatesByCategory(certificateCategory)" [name]="cert.name" [url]="cert.url" />
+    </div>
+</div>

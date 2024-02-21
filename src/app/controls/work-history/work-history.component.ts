@@ -6,7 +6,8 @@ import { WorkEntry } from 'src/app/model/workEntry';
   templateUrl: './work-history.component.html',
   styleUrls: ['./work-history.component.scss']
 })
+
 export class WorkHistoryComponent {
   @Input()
-  entry: WorkEntry|any = null;
+  entry?: WorkEntry;
 }

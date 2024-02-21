@@ -1,18 +1,5 @@
 <app-loading-modal *ngIf="isLoading"></app-loading-modal>
-
-<mat-toolbar color="primary">
-  <span>{{title}}</span>
-  <span class="header-spacer"></span>
-  <button mat-icon-button class="header-icon" (click)="onDownloadClicked()">
-    <mat-icon>download</mat-icon>
-  </button>
-  <button mat-icon-button class="header-icon" (click)="onFavouriteClicked()">
-    <mat-icon>favorite</mat-icon>
-  </button>
-  <button mat-icon-button class="header-icon" (click)="onShareClicked()">
-    <mat-icon>share</mat-icon>
-  </button>
-</mat-toolbar>
+<app-navigation-panel title={{title}} (downloadResumeEvent)="downloadResume($event)"/>
 <app-personal-details [profile]="profile"></app-personal-details>
 <mat-accordion>
   <mat-expansion-panel *ngIf="hasAdditionalProfiles">
@@ -47,6 +34,6 @@
         Certificates
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <p>Nothing here yet.</p>
+    <app-certificate-container [certificates]="profile?.certificates" />
   </mat-expansion-panel>
 </mat-accordion>

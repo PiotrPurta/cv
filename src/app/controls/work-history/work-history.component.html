@@ -1,8 +1,8 @@
-<div class="entry">
+<div class="employment__entry">
     <div>
-        <span class="period"><b>{{entry?.dateFrom}} - {{entry?.dateTo}}</b></span>
+        <span class="employment__period"><b>{{entry?.dateFrom}} - {{entry?.dateTo}}</b></span>
     </div>
-    <div class="description">
+    <div>
         <p><b>{{entry?.company}} ({{entry?.role}})</b></p>
         <ul>
             <li *ngFor="let detail of entry?.projectsDetails">{{detail}}</li>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Profile } from '../model/profile';
-import { ProfileService } from '../services/profileService';
+import { Profile } from '../../model/profile';
+import { ProfileService } from '../../services/profileService';
+import { Environment } from 'src/environment';
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,9 @@ import { ProfileService } from '../services/profileService';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit{
-  title = 'Curriculum Vitae';
+  title = Environment.Title;
 
-  profile: Profile|any = null;
+  profile?: Profile;
 
   public get isLoading(){
     return this.profile == null;
@@ -22,7 +23,8 @@ export class MainComponent implements OnInit{
   }
 
   public get hasCertificates(){
-    return false;
+    return this.profile?.certificates != null
+      && this.profile.certificates.length > 0;
   }
 
   constructor(private profileService: ProfileService){ }
@@ -31,16 +33,14 @@ export class MainComponent implements OnInit{
     this.profile = await this.profileService.getProfileData();
   }
 
-  onFavouriteClicked() {
-    console.log("Favourite Clicked");
-  }
+  downloadResume(isPolishVersionSelected: boolean){
+    const resumeFileUrl = isPolishVersionSelected
+      ? this.profile?.resumePolishVersionUrl
+      : this.profile?.resumeEnglishVersionUrl;
 
-  onShareClicked(){
-    console.log("Share clicked");
-  }
-
-  onDownloadClicked() {
-    console.log("Download Clicked");
+      if (resumeFileUrl){
+        window.location.href = resumeFileUrl;
+      }
   }
 }
 

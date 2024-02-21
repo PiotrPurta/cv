@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+    <span>{{title}}</span>
+    <span class="header__spacer"></span>
+    <button mat-icon-button class="header__icon" [matMenuTriggerFor]="menu">
+      <mat-icon>download</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="downloadResumeEvent.emit(true)">Polish Resume</button>
+      <button mat-menu-item (click)="downloadResumeEvent.emit(false)">English Resume</button>
+    </mat-menu>
+</mat-toolbar>

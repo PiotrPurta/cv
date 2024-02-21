@@ -18,6 +18,10 @@ mat-card-title {
     color: #FFFFFF;
 }
 
+.image {
+    height: auto;
+}
+
 @media screen and (max-width: 590px) {
     .image{
         display: none;
